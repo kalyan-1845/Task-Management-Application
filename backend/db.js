@@ -210,3 +210,5 @@ dbInstance.seed().then(() => {
 });
 
 export default dbInstance;
+
+// Seed initialization completed
