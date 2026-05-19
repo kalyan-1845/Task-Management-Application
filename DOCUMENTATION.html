@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortex Tasks | Official Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #0a051b;
+            --bg-surface: #120b2e;
+            --bg-panel: rgba(22, 16, 49, 0.65);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-surface);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 12px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background-color: rgba(139, 92, 246, 0.1);
+            padding-left: 16px;
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 50px 80px;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        .hero {
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0 0 15px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        section h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background: var(--gradient);
+            border-radius: 4px;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .glass-card h3 {
+            margin-top: 0;
+            color: var(--accent-cyan);
+            font-size: 1.3rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            color: #e5e7eb;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-purple);
+        }
+
+        ul.feature-list {
+            padding-left: 20px;
+        }
+
+        ul.feature-list li {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+
+        ul.feature-list li strong {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+            .content {
+                margin-left: 0;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2><span class="gradient-text">Vortex</span> Docs</h2>
+        <ul class="nav-links">
+            <li><a href="#overview">Project Overview</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#realtime">Real-Time Sync (SSE)</a></li>
+            <li><a href="#features">Key Features</a></li>
+            <li><a href="#installation">Installation & Setup</a></li>
+            <li><a href="#api">API Reference</a></li>
+            <li><a href="#database">Database Schema</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1 class="gradient-text">Vortex Tasks</h1>
+            <p>The ultimate premium full-stack task management application. Built for high performance, real-time collaboration, and unparalleled visual aesthetics.</p>
+        </div>
+
+        <!-- Overview -->
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <p>Vortex Tasks is a complete full-stack web application designed to demonstrate mastery over modern web architecture. It implements secure JWT-based user authentication, standard CRUD task operations, collaborative commentary, and native Server-Sent Events (SSE) for zero-latency, real-time UI synchronization across all connected team dashboards.</p>
+        </section>
+
+        <!-- Architecture -->
+        <section id="architecture">
+            <h2>System Architecture</h2>
+            <div class="glass-card">
+                <h3>Frontend: React + Vite</h3>
+                <p>The client is a Single Page Application (SPA) built with React and bundled via Vite for lightning-fast HMR. It utilizes a custom-built, ultra-premium glassmorphism CSS framework, ensuring completely responsive layouts across desktop and mobile.</p>
+            </div>
+            
+            <div class="glass-card">
+                <h3>Backend: Node.js + Express</h3>
+                <p>The server operates on a robust Node.js Express framework. It exposes RESTful API endpoints secured by JSON Web Tokens (`jsonwebtoken`) and bcrypt password hashing. It also manages the SSE connection pool.</p>
+            </div>
+
+            <div class="glass-card">
+                <h3>Storage: Local JSON Database</h3>
+                <p>For maximum portability and zero-installation reliability, the application uses a custom synchronous file-system JSON controller (`db.js`). This reads and writes to a `db.json` file, fully simulating a production database with strict relationship enforcement.</p>
+            </div>
+        </section>
+
+        <!-- Real-Time Sync -->
+        <section id="realtime">
+            <h2>Real-Time Sync (SSE Engine)</h2>
+            <p>Instead of relying on heavy WebSocket wrappers (like Socket.io), Vortex Tasks utilizes native browser <strong>Server-Sent Events (SSE)</strong> to achieve real-time synchronization.</p>
+            <pre>
+// Client-side Handshake
+const eventSource = new EventSource('http://localhost:5000/api/events');
+
+eventSource.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    if (data.event === 'TASK_UPDATED') {
+        updateLocalState(data.payload);
+    }
+};</pre>
+            <p>When any user modifies a task (e.g., dragging a Kanban card to "Done"), the server broadcasts the exact state change to the entire SSE client pool, triggering an instant React re-render for all active viewers.</p>
+        </section>
+
+        <!-- Key Features -->
+        <section id="features">
+            <h2>Key Features</h2>
+            <ul class="feature-list">
+                <li><strong>Glassmorphism UI:</strong> Deep purple gradients, frosted blur panels, and custom glowing SVGs.</li>
+                <li><strong>HTML5 Drag-and-Drop Kanban:</strong> Fluidly move tasks between custom status lanes.</li>
+                <li><strong>Live Discussion Feeds:</strong> Post comments on individual tasks and watch them appear instantly on team screens.</li>
+                <li><strong>Analytical Dashboards:</strong> Pure CSS and SVG-based circular progression dials and priority charts.</li>
+                <li><strong>Calendar Grid Pre-population:</strong> Click any blank day on the calendar to instantly spawn a new task prepopulated with that due date.</li>
+                <li><strong>Advanced List Filters:</strong> Dynamic sorting and status checkboxes optimized for rapid workflows.</li>
+            </ul>
+        </section>
+
+        <!-- Installation -->
+        <section id="installation">
+            <h2>Installation & Setup</h2>
+            <p>The workspace includes a master <code>package.json</code> that utilizes the <code>concurrently</code> module to boot both servers flawlessly.</p>
+            
+            <div class="glass-card">
+                <h3>1. Install Dependencies</h3>
+                <pre>npm run install-all</pre>
+                
+                <h3>2. Start the Workspace</h3>
+                <pre>npm run dev</pre>
+                <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;">This command will expose the Frontend at <code>http://localhost:5173</code> and the Backend at <code>http://localhost:5000</code>.</p>
+            </div>
+        </section>
+
+        <!-- API Reference -->
+        <section id="api">
+            <h2>API Reference</h2>
+            <p>All endpoints are prefixed with <code>/api</code>. Protected routes require an <code>Authorization: Bearer <token></code> header.</p>
+            
+            <div class="glass-card">
+                <h3>Auth Routes</h3>
+                <ul class="feature-list">
+                    <li><code>POST /auth/register</code> - Create a new user</li>
+                    <li><code>POST /auth/login</code> - Authenticate and retrieve JWT</li>
+                    <li><code>GET /auth/me</code> - Verify token and get user profile (Protected)</li>
+                </ul>
+
+                <h3 style="margin-top: 20px;">Task Routes (Protected)</h3>
+                <ul class="feature-list">
+                    <li><code>GET /tasks</code> - Retrieve all active tasks</li>
+                    <li><code>POST /tasks</code> - Create a new task</li>
+                    <li><code>PUT /tasks/:id</code> - Update task properties (status, priority, etc.)</li>
+                    <li><code>DELETE /tasks/:id</code> - Remove a task and its comments</li>
+                </ul>
+
+                <h3 style="margin-top: 20px;">Live Streams (Protected)</h3>
+                <ul class="feature-list">
+                    <li><code>GET /events</code> - Initialize persistent SSE stream</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
