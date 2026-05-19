@@ -98,3 +98,5 @@ export const api = {
   // SSE Stream URL helper
   getEventsUrl: () => `${API_BASE}/events`
 };
+
+// End of API routes
