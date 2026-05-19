@@ -46,3 +46,5 @@ npm run dev
    * **Username**: `demo`
    * **Password**: `password123`
 3. Open a second browser tab (or incognito window) side-by-side to witness real-time SSE syncing! Drag a task or post a comment in one tab and watch it instantly update in the other.
+
+<!-- End of documentation -->
